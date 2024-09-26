@@ -204,4 +204,51 @@ class AdminController extends Controller
         return response()->json(['message' => 'Meal deleted successfully']);
     }
 
+
+
+    public function getUserProfileAdmin($id)
+    {
+        $user = User::find(2);
+
+        if ($user) {
+            return response()->json($user);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+    }
+
+    // Update user profile
+    public function updateUserProfileAdmin(Request $request)
+    {
+        $user = User::find(2);
+
+        if ($user) {
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->phone = $request->input('phone');
+
+
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $imagePath = $image->store('user_image', 'public');
+            //     $user->image = $imagePath;
+            // }
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+                $image->storeAs('public/user_image', $imageName);
+
+                $user->image = $imageName;
+            }
+
+
+
+            $user->save();
+            return response()->json(['message' => 'Profile updated successfully']);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+    }
 }

@@ -47,7 +47,11 @@ Route::delete('/admin/meal-types/{id}', [AdminController::class, 'destroymealtyp
 
 Route::get('/admin/meals', [AdminController::class, 'indexmeal']);
 Route::put('/admin/meals/{id}', [AdminController::class, 'updatemeal']);
-Route::delete('/admin/meals/{id}', [AdminController::class, 'destroymeal']);
+Route::delete('/admin/meals/{id}',[ AdminController::class, 'destroymeal']);
+
+Route::get('/admin/user/{id}', [AdminController::class, 'getUserProfileAdmin']);
+Route::post('/admin/user/{id}/update', [AdminController::class, 'updateUserProfileAdmin']);
+
 // url : http://127.0.0.1:8000/api/admin/users
 
 //Aseel routes ends
