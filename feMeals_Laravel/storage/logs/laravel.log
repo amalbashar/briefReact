@@ -2541,6 +2541,7 @@ Did you mean one of these?
 =======
 >>>>>>> eadd3c58aa98e48f32e6573496154817b875ca81
 "} 
+<<<<<<< HEAD
 [2024-09-26 16:59:33] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organization' in 'field list' (Connection: mysql, SQL: update `users` set `phone` = 1234567894545, `organization` = ?, `address` = ?, `state` = ?, `zipCode` = ?, `country` = ?, `language` = ?, `timeZones` = ?, `currency` = ?, `users`.`updated_at` = 2024-09-26 16:59:33 where `id` = 2) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organization' in 'field list' (Connection: mysql, SQL: update `users` set `phone` = 1234567894545, `organization` = ?, `address` = ?, `state` = ?, `zipCode` = ?, `country` = ?, `language` = ?, `timeZones` = ?, `currency` = ?, `users`.`updated_at` = 2024-09-26 16:59:33 where `id` = 2) at C:\\Users\\Orange\\Desktop\\briefReact\\feMeals_Laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:829)
 [stacktrace]
 #0 C:\\Users\\Orange\\Desktop\\briefReact\\feMeals_Laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('update `users` ...', Array, Object(Closure))
@@ -2642,4 +2643,13 @@ Did you mean one of these?
 #46 C:\\Users\\Orange\\Desktop\\briefReact\\feMeals_Laravel\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #47 C:\\Users\\Orange\\Desktop\\briefReact\\feMeals_Laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\Users\\\\Orange...')
 #48 {main}
+=======
+[2024-09-26 11:35:20] local.ERROR: Cannot use App\Http\Controllers\AdminController as AdminController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\AdminController as AdminController because the name is already in use at C:\\Users\\Orange\\Desktop\\briefReact\\feMeals_Laravel\\routes\\api.php:41)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-26 11:35:20] local.ERROR: Cannot use App\Http\Controllers\AdminController as AdminController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\AdminController as AdminController because the name is already in use at C:\\Users\\Orange\\Desktop\\briefReact\\feMeals_Laravel\\routes\\api.php:41)
+[stacktrace]
+#0 {main}
+>>>>>>> 2cf163d2a5a8d3e04d362918796dea8305b09bbd
 "} 

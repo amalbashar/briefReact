@@ -57,6 +57,7 @@ Route::post('/admin/user/{id}/update', [AdminController::class, 'updateUserProfi
 //Aseel routes ends
 
 //Amal routes start
+use App\Http\Controllers\FoodMenuController;
 
 Route::get('/food-menu', [FoodMenuController::class, 'getMeals']);
 Route::get('/food-menu-v4', [FoodMenuController::class, 'getFoodMenu']);
@@ -83,5 +84,7 @@ Route::post('/login', [AuthController::class, 'login']);
 //Dania routes ends
 
 //Dalia routes start
+use App\Http\Controllers\MealController;
 
+Route::get('/dalia/meal-classes/{meal_type_id}', [MealController::class, 'getMealClasses']);
 //Dalia routes ends
