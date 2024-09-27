@@ -54,7 +54,9 @@ const FooterRowContent = () => {
                                     <i className="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div className="content">
-                                    175 10h Street, Office 375 Berlin, De 21562
+                                    175 Street, Office
+                                    
+                                    Jordan
                                 </div>
                             </li>
                             <li>
@@ -62,7 +64,7 @@ const FooterRowContent = () => {
                                     <i className="fas fa-phone"></i>
                                 </div>
                                 <div className="content">
-                                    <a href="tel:2151234567">+123 34598768</a> <br /> <a href="tel:2151234567">+554 34598734</a>
+                                    <a href="tel:2151234567">+9620968294</a> <br /> <a href="tel:2151234567">07968963207</a>
                                 </div>
                             </li>
                             <li>
@@ -70,7 +72,7 @@ const FooterRowContent = () => {
                                     <i className="fas fa-envelope"></i>
                                 </div>
                                 <div className="content">
-                                    <a href="mailto:name@email.com">food@restan.com</a>
+                                    <a href="mailto:name@email.com">fe-meal@.com</a>
                                 </div>
                             </li>
                         </ul>

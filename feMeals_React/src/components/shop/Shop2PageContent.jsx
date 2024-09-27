@@ -1,104 +1,125 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ShopProductTab from '@/components/product/ShopProductTab';
-import RelatedProducts from '@/components/product/RelatedProducts';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../../assets/css/UserDashboard.css'; // مسار الـ CSS المعدل
 
-const Shop2PageContent = () => {
+const UserDashboardComponent = ({ userData }) => {
     return (
-        <>
-            <div className="validtheme-shop-single-area default-padding">
-                <div className="container">
-                    <div className="product-details">
-                        <div className="row">
-
-                            <div className="col-lg-6">
-                                <div className="product-thumb">
-                                    <div className="item-box">
-                                        <div className="product-item">
-                                            <Link to="assets/img/shop/1.png" className="item popup-gallery">
-                                                <img src="/assets/img/shop/1.png" alt="Thumb" />
-                                            </Link>
-                                            <span className="onsale theme">-16%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-6">
-                                <div className="single-product-contents">
-                                    <div className="summary-top-box">
-                                        <div className="product-tags">
-                                            <Link to="#">Cheese</Link>
-                                            <Link to="#">Pizza</Link>
-                                        </div>
-                                        <div className="review-count">
-                                            <div className="rating">
-                                                <i className="fas fa-star"></i>
-                                                <i className="fas fa-star"></i>
-                                                <i className="fas fa-star"></i>
-                                                <i className="fas fa-star"></i>
-                                                <i className="fas fa-star-half-alt"></i>
-                                            </div>
-                                            <span>(8 Review)</span>
-                                        </div>
-                                    </div>
-                                    <h2 className="product-title">
-                                        Margherita Pizza
-                                    </h2>
-                                    <div className="price">
-                                        <span><del>$8.00</del></span>
-                                        <span>$5.00</span>
-                                    </div>
-                                    <div className="product-stock validthemes-in-stock">
-                                        <span>In Stock</span>
-                                    </div>
-                                    <p>
-                                        The Aspire 5 is a compact laptop in a thin case with a metal cover, a high-quality Full HD IPS display and a rich set of interfaces. Thanks to its powerful components, the laptop can handle resource-intensive tasks perfectly and is also suitable for most games. non-characteristic words etc. Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder
-                                    </p>
-                                    <div className="product-purchase-list">
-                                        <input type="number" id="quantity" step="1" name="quantity" min="0" placeholder="0" />
-                                        <Link to="#" className="btn secondary btn-theme btn-sm animation">
-                                            <i className="fas fa-shopping-cart"></i>
-                                            Add to cart
-                                        </Link>
-                                        <div className="shop-action">
-                                            <ul>
-                                                <li className="wishlist">
-                                                    <Link to="#"><span>Add to wishlist</span></Link>
-                                                </li>
-                                                <li className="compare">
-                                                    <Link to="#"><span>Compare</span></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="product-estimate-delivary">
-                                        <i className="fas fa-box-open"></i>
-                                        <strong> 2-day Delivery</strong>
-                                        <span>Speedy and reliable parcel delivery!</span>
-                                    </div>
-                                    <div className="product-meta">
-                                        <span className="sku">
-                                            <strong>SKU:</strong> BE45VGRT
-                                        </span>
-                                        <span className="posted-in">
-                                            <strong>Category:</strong>
-                                            <Link to="#">Computer</Link> ,
-                                            <Link to="#">Speaker</Link>,
-                                            <Link to="#">Headphone</Link>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ShopProductTab />
-                    <RelatedProducts />
-
-                </div>
-            </div>
-        </>
+        <div>
+            <h2>Welcome, {userData.user.name}!</h2>
+            <p>Email: {userData.user.email}</p>
+            <p>Phone: {userData.user.phone}</p>
+        </div>
     );
 };
 
-export default Shop2PageContent;
+const SubscriptionDashboardComponent = ({ subscriptions }) => {
+    const getRemainingDays = (endDate) => {
+        const end = new Date(endDate);
+        const today = new Date();
+        const diffTime = end - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays;
+    };
+
+    const getAlertClass = (remainingDays) => {
+        if (remainingDays <= 3) {
+            return 'alert-danger'; // اللون الأحمر
+        } else if (remainingDays <= 10) {
+            return 'alert-warning'; // اللون الأصفر
+        } else {
+            return 'alert-success'; // اللون الأخضر
+        }
+    };
+
+    return (
+        <div className="subscription-container">
+            <h3>Your Subscriptions</h3>
+            <div className="subscription-cards">
+                {subscriptions.length > 0 ? (
+                    subscriptions.map((subscription, index) => {
+                        const remainingDays = getRemainingDays(subscription.end_date);
+                        return (
+                            <div key={index} className="subscription-card">
+                                <h4>Subscription {index + 1}</h4>
+                                <p><strong>Start Date:</strong> {subscription.start_date}</p>
+                                <p><strong>End Date:</strong> {subscription.end_date}</p>
+                                <p><strong>Status:</strong> {subscription.status}</p>
+                                <p><strong>Delivery Info:</strong> {subscription.delivery_info}</p>
+
+                                {/* إضافة التنبيه بناءً على عدد الأيام المتبقية */}
+                                <div className={`alert ${getAlertClass(remainingDays)}`} role="alert">
+                                    {remainingDays <= 0 
+                                        ? 'Your subscription has expired.'
+                                        : `You have ${remainingDays} days left.`}
+                                </div>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <p>No subscriptions found</p>
+                )}
+            </div>
+        </div>
+    );
+};
+
+const Dashboard = () => {
+    const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [activePage, setActivePage] = useState('userDashboard'); // للتحكم في الصفحة النشطة
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/user')
+            .then(response => {
+                console.log(response.data); // طباعة البيانات للتحقق
+                setUserData(response.data); // تعيين البيانات المسترجعة للحالة
+                setLoading(false); // إيقاف التحميل
+            })
+            .catch(error => {
+                console.error("There was an error fetching the user data!", error);
+                setLoading(false); // إيقاف التحميل حتى عند حدوث خطأ
+            });
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>; // عرض رسالة أثناء تحميل البيانات
+    }
+
+    if (!userData) {
+        return <div>No data found</div>; // إذا لم يتم العثور على بيانات
+    }
+
+    return (
+        <div className="dashboard-container">
+            <div className="profile-section">
+                <img className="profile-image" src="https://via.placeholder.com/150" alt="Profile" />
+            </div>
+            <div className="content-section">
+                <div className="button-container">
+                    <button
+                        className={`dashboard-button ${activePage === 'userDashboard' ? 'active' : ''}`}
+                        onClick={() => setActivePage('userDashboard')}
+                    >
+                        User Dashboard
+                    </button>
+                    <button
+                        className={`dashboard-button ${activePage === 'subscriptionDashboard' ? 'active' : ''}`}
+                        onClick={() => setActivePage('subscriptionDashboard')}
+                    >
+                        Subscription Dashboard
+                    </button>
+                </div>
+
+                <div className="dashboard-content">
+                    {activePage === 'userDashboard' ? (
+                        <UserDashboardComponent userData={userData} />
+                    ) : (
+                        <SubscriptionDashboardComponent subscriptions={userData.subscriptions} />
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Dashboard;
