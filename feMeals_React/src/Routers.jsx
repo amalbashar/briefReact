@@ -139,13 +139,16 @@ const Routers = () => {
         <Route path="/not-found-dark" element={<NotFoundDarkPage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
 
-        <Route path="/food-category" element={<SingleFoodCategoryV3 />} ></Route>
+        <Route path="/food-category" element={<SingleFoodCategoryV3 />}></Route>
 
         {/* Route for MealClasses based on meal_type_id */}
         <Route
           path="/subscription-details/:meal_type_id"
-          element={<MealClasses />}> </Route>
-       
+          element={<MealClasses />}
+        >
+          {" "}
+        </Route>
+        
       </Routes>
     </>
   );

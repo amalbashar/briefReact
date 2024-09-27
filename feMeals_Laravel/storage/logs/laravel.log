@@ -2653,3 +2653,7 @@ Did you mean one of these?
 #0 {main}
 >>>>>>> 2cf163d2a5a8d3e04d362918796dea8305b09bbd
 "} 
+[2024-09-26 19:54:55] local.ERROR: Cannot use App\Http\Controllers\FoodMenuController as FoodMenuController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\FoodMenuController as FoodMenuController because the name is already in use at C:\\Users\\Pc\\Desktop\\briefReact\\feMeals_Laravel\\routes\\api.php:60)
+[stacktrace]
+#0 {main}
+"} 

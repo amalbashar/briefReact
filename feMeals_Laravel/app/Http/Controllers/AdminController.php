@@ -233,15 +233,25 @@ class AdminController extends Controller
             //     $imagePath = $image->store('user_image', 'public');
             //     $user->image = $imagePath;
             // }
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+
+            //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            //     $image->storeAs('public/storage/user_image', $imageName);
+
+            //     $user->image = $imageName;
+            // }
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
+                $filename = 'user_image_' . time() . '.' . $image->getClientOriginalExtension();
+                $path = $image->storeAs('public/user_image', $filename);
 
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-
-                $image->storeAs('public/user_image', $imageName);
-
-                $user->image = $imageName;
+                // Save only the filename in the database
+                $user->image = $filename;
+                $user->save();
             }
+
 
 
 
