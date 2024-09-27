@@ -93,5 +93,15 @@ Route::post('/login', [AuthController::class, 'login']);
 //Dalia routes start
 use App\Http\Controllers\MealController;
 
+// Route::get('/meal-classes', [MealClassController::class, 'index']);
+
+
+// routes/api.php
+
+
+
+Route::get('/ShopPageContent/{meal_type_id}', [MealController::class, 'getShopPageContent']);
+
+
 Route::get('/dalia/meal-classes/{meal_type_id}', [MealController::class, 'getMealClasses']);
 //Dalia routes ends

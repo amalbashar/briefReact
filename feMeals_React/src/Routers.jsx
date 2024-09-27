@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
-// Import all your components here
 import Home1 from "./pages/homePages/Home1";
 import Home2 from "./pages/homePages/Home2";
 import Home3 from "./pages/homePages/Home3";
@@ -35,7 +33,7 @@ import Blog2ColumnPageDark from "./pages/blogPages/Blog2ColumnPageDark";
 import Blog3ColumnPageDark from "./pages/blogPages/Blog3ColumnPageDark";
 import BlogSinglePageDark from "./pages/blogPages/BlogSinglePageDark";
 import BlogSingleWithSidebarPageDark from "./pages/blogPages/BlogSingleWithSidebarPageDark";
-import ShopPage from "./pages/shopPages/ShopPage";
+
 import ShopSinglePage from "./pages/shopPages/ShopSinglePage";
 import ShopSingle2Page from "./pages/shopPages/ShopSingle2Page";
 import ShopPageDark from "./pages/shopPages/ShopPageDark";
@@ -43,10 +41,6 @@ import ShopSinglePageDark from "./components/shop/ShopSinglePageContent";
 import ShopSingle2PageDark from "./pages/shopPages/ShopSingle2PageDark";
 import NotFoundDarkPage from "./components/notFound/NotFoundDarkPage";
 import NotFoundPage from "./components/notFound/NotFoundPage";
-
-// Import the missing components
-import SingleFoodCategoryV3 from "./components/food/SingleFoodCategoryV3";
-import MealClasses from "./components/food/MealClasses";
 
 const Routers = () => {
   return (
@@ -138,17 +132,6 @@ const Routers = () => {
 
         <Route path="/not-found-dark" element={<NotFoundDarkPage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
-
-        <Route path="/food-category" element={<SingleFoodCategoryV3 />}></Route>
-
-        {/* Route for MealClasses based on meal_type_id */}
-        <Route
-          path="/subscription-details/:meal_type_id"
-          element={<MealClasses />}
-        >
-          {" "}
-        </Route>
-        
       </Routes>
     </>
   );
