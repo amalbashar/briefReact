@@ -121,7 +121,9 @@ const Sidebar = () => {
         </li>
 
         {/* Profile */}
-        <li className={`menu-item ${isActive("/admin/profile") ? "active" : ""}`}>
+        <li
+          className={`menu-item ${isActive("/admin/profile") ? "active" : ""}`}
+        >
           <Link to="/admin/profile" className="menu-link menu-toggle">
             <i className="menu-icon tf-icons bx bx-user-circle"></i>{" "}
             {/* Updated icon */}

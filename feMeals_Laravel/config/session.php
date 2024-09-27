@@ -155,7 +155,8 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    // 'domain' => env('SESSION_DOMAIN'),
+    'domain' => '127.0.0.1',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,8 +169,8 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
-
+    // 'secure' => env('SESSION_SECURE_COOKIE'),
+'secure' => false,
     /*
     |--------------------------------------------------------------------------
     | HTTP Access Only

@@ -7,21 +7,23 @@ const Dashboard = () => {
   useEffect(() => {
     // Make API call to retrieve static user with id 2
     axios
-      .get("http://localhost:8000/api/admin/dashboard")
+      .get("http://127.0.0.1:8000/api/admin/dashboard", {
+        withCredentials: true,
+      })
       .then((response) => {
-        setUser(response.data.user); // Set the user data
-        setTotalProfit(response.data.totalProfit); // Set the total profit
-        setSubscriptionCount(response.data.subscriptionCount); // Set the subscription count
+        setUser(response.data.user);
+        setTotalProfit(response.data.totalProfit || 0); // Handle potential null values
+        setSubscriptionCount(response.data.subscriptionCount || 0);
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
+        // Handle the error in UI
       });
   }, []);
 
   const [totalProfit, setTotalProfit] = useState(0);
 
   const [subscriptionCount, setSubscriptionCount] = useState(0);
-
 
   return (
     // <div className="content-wrapper">

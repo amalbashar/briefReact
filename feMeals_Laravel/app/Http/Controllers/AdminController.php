@@ -9,41 +9,121 @@ use App\Models\MealClass;
 use App\Models\MealType;
 use App\Models\User;
 use App\Models\Meal;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log; // Import the Log facade
 
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        $users = User::with('role')->get();
+    // public function login(Request $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
 
-        return response()->json($users);
+    //     if (Auth::attempt($credentials)) {
+    //         $user = Auth::user();
+
+    //         // Ensure the user is an admin
+    //         if ($user->role_id == 2) {
+    //             $request->session()->regenerate();
+    //             return response()->json(['message' => 'Login successful'], 200);
+    //         } else {
+    //             Auth::logout();
+    //             return response()->json(['error' => 'Unauthorized'], 403);
+    //         }
+    //     } else {
+    //         return response()->json(['error' => 'Invalid Credentials'], 401);
+    //     }
+    // }
+
+
+    public function login(Request $request)
+    {
+        // Validate login credentials
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role_id == 2) {
+                return response()->json([
+                    'message' => 'Login successful',
+                    'data' => $user,
+                ], 200);
+            } else {
+                return response()->json(['message' => 'Unauthorized role'], 403);
+            }
+        }
+
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
+    // Logout method
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return response()->json(['message' => 'Logout successful'], 200);
+    }
+
+
+    // public function index()
+    // {
+    //     $users = User::with('role')->get();
+
+    //     return response()->json($users);
+    // }
 
     public function dashboard()
     {
-        // Retrieve user with ID 2 (static for now)
+        // if (!Auth::check()) {
+        //     return response()->json(['error' => 'Unauthenticated'], 401);  // Return 401 if user is not logged in
+        // }
+
+        // $user = Auth::user();
+
+        // if ($user->role_id != 2) {
+        //     return response()->json(['error' => 'Unauthorized'], 403);
+        // }
+
+
+        // $user = Auth::user();  // Fetching the currently authenticated user
         $user = User::find(2);
+        try {
+            // Ensure meal_classes is properly joined and data exists
+            $totalProfit = Subscription::whereMonth('start_date', Carbon::now()->month)
+                ->whereYear('start_date', Carbon::now()->year)
+                ->join('meal_classes', 'subscriptions.meal_class_id', '=', 'meal_classes.id')
+                ->sum('meal_classes.price'); // Summing the price from meal_classes
 
-        $totalProfit = Subscription::whereMonth('start_date', Carbon::now()->month)
-            ->whereYear('start_date', Carbon::now()->year)
-            ->join('meal_classes', 'subscriptions.meal_class_id', '=', 'meal_classes.id')
-            ->sum('meal_classes.price'); // Summing the price from meal_classes
+            // Count the number of subscriptions for the current month
+            $subscriptionCount = Subscription::whereMonth('start_date', Carbon::now()->month)
+                ->whereYear('start_date', Carbon::now()->year)
+                ->count();
 
-        // Count the number of subscriptions for the current month
-        $subscriptionCount = Subscription::whereMonth('start_date', Carbon::now()->month)
-            ->whereYear('start_date', Carbon::now()->year)
-            ->count();
+            // Return both total profit and subscription count in one response
+            return response()->json([
+                'user' => $user,
+                'totalProfit' => $totalProfit,
+                'subscriptionCount' => $subscriptionCount
+            ]);
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            Log::error('Error fetching dashboard data: ' . $e->getMessage());
 
-        // Return both total profit and subscription count in one response
-        return response()->json([
-            'user' => $user,
-
-            'totalProfit' => $totalProfit,
-            'subscriptionCount' => $subscriptionCount
-        ]);
+            return response()->json([
+                'error' => 'Failed to fetch data',
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
+
 
     public function getSubscriptions()
     {

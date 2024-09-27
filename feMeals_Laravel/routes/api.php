@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\UserDashboardController;
 
 use Illuminate\Http\Request;
@@ -38,8 +39,8 @@ Route::put('/admin/users/{id}', [AdminController::class, 'updateUser']);
 Route::delete('/admin/users/{id}', [AdminController::class, 'deleteUser']);
 
 Route::get('/admin/meal-classes', [AdminController::class, 'getMealClasses']);
- Route::put('/admin/meal-classes/{id}', [AdminController::class, 'updateMealClass']);
- Route::delete('/admin/meal-classes/{id}', [AdminController::class, 'deleteMealClass']);
+Route::put('/admin/meal-classes/{id}', [AdminController::class, 'updateMealClass']);
+Route::delete('/admin/meal-classes/{id}', [AdminController::class, 'deleteMealClass']);
 
 Route::get('/admin/meal-types', [AdminController::class, 'indexmealtype']);
 Route::put('/admin/meal-types/{id}', [AdminController::class, 'updatemealtype']);
@@ -47,10 +48,16 @@ Route::delete('/admin/meal-types/{id}', [AdminController::class, 'destroymealtyp
 
 Route::get('/admin/meals', [AdminController::class, 'indexmeal']);
 Route::put('/admin/meals/{id}', [AdminController::class, 'updatemeal']);
-Route::delete('/admin/meals/{id}',[ AdminController::class, 'destroymeal']);
+Route::delete('/admin/meals/{id}', [AdminController::class, 'destroymeal']);
 
 Route::get('/admin/user/{id}', [AdminController::class, 'getUserProfileAdmin']);
 Route::post('/admin/user/{id}/update', [AdminController::class, 'updateUserProfileAdmin']);
+
+
+Route::post('/admin/login', [AdminController::class, 'login']);
+Route::post('/admin/register', [AdminController::class, 'register']);
+
+
 
 // url : http://127.0.0.1:8000/api/admin/users
 
