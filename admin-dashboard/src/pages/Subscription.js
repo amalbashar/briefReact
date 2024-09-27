@@ -16,29 +16,37 @@ const Subscription = () => {
       });
   }, []);
 
-  const handleStatusChange = (id, newStatus) => {
-    const confirmChange = window.confirm(
-      `Are you sure you want to ${newStatus} this subscription?`
-    );
+const handleStatusChange = (id, newStatus) => {
+  const confirmChange = window.confirm(
+    `Are you sure you want to ${newStatus} this subscription?`
+  );
 
-    if (confirmChange) {
-      axios
-        .post(`http://localhost:8000/api/admin/subscriptions/${id}/status`, {
-          status: newStatus,
-        })
-        .then(() => {
-          // Update the local state with the new status
-          setSubscriptions((prevSubscriptions) =>
-            prevSubscriptions.map((sub) =>
-              sub.id === id ? { ...sub, status: newStatus } : sub
-            )
-          );
-        })
-        .catch((error) => {
-          console.error("Error updating subscription status", error);
-        });
-    }
-  };
+  if (confirmChange) {
+    axios
+      .post(`http://localhost:8000/api/admin/subscriptions/${id}/status`, {
+        status: newStatus,
+      })
+      .then((response) => {
+        // Update the local state with the new status and approved_by value
+        const updatedSubscription = response.data.subscription;
+        setSubscriptions((prevSubscriptions) =>
+          prevSubscriptions.map((sub) =>
+            sub.id === id
+              ? {
+                  ...sub,
+                  status: updatedSubscription.status,
+                  approved_by: updatedSubscription.approved_by,
+                }
+              : sub
+          )
+        );
+      })
+      .catch((error) => {
+        console.error("Error updating subscription status", error);
+      });
+  }
+};
+
   return (
     <div class="container-xxl flex-grow-1 container-p-y aseelContainer">
       <div className="card">

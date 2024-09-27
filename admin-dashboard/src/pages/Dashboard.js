@@ -33,7 +33,7 @@ const Dashboard = () => {
               <div className="col-sm-7">
                 <div className="card-body">
                   <br />
-                  <h3 className="card-title text-primary mb-3">
+                  <h3 className="card-title aseeltext-primary mb-3">
                     {" "}
                     {user ? `Hi ${user.name}! 🎉` : "Loading..."}
                   </h3>

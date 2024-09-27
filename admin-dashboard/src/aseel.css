@@ -10,3 +10,40 @@ a {
 .card {
   border-color: white !important;
 }
+
+/* Add a specific class for this table */
+.meal-class-table td.description {
+  /* max-width: 250px; Adjust the max-width as needed */
+  /* white-space: normal; Allow text wrapping */
+}
+
+.meal-class-table {
+  table-layout: auto;
+  width: 100%; /* Ensure the table spans the width of the container */
+}
+
+/* CSS for scrollable description */
+.meal-class-table td.description {
+  /* max-height: 80px; Set the height of the description cell */
+  overflow-y: auto; /* Enable vertical scroll */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  display: block; /* Make the cell behave like a block element to apply scrolling */
+  white-space: normal; /* Allow text to wrap */
+}
+
+body{
+  background-color: #dbac7830 !important;
+}
+
+.aseeltext-primary {
+    color: rgb(124 84 0 / 95%) !important;
+}
+
+.bg-menu-theme .menu-inner > .menu-item.active > .menu-link {
+    color:  rgb(124 84 0 / 95%) !important;
+    background-color:  rgb(255 189 105 / 77%) !important;
+}
+
+.bg-menu-theme .menu-inner > .menu-item.active:before {
+    background:  rgb(124 84 0 / 95%) !important;
+}
