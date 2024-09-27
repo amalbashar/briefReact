@@ -33,6 +33,7 @@ Route::get('/admin/users', [AdminController::class, 'index']);
 //Amal routes start
 
 use App\Http\Controllers\FoodMenuController;
+
 Route::get('/food-menu', [FoodMenuController::class, 'getMeals']);
 Route::get('/food-menu-v4', [FoodMenuController::class, 'getFoodMenu']);
 
@@ -53,5 +54,16 @@ Route::get('/food-menu-v4', [FoodMenuController::class, 'getFoodMenu']);
 //Dania routes ends
 
 //Dalia routes start
+use App\Http\Controllers\MealClassController;
+
+// Route::get('/meal-classes', [MealClassController::class, 'index']);
+
+
+// routes/api.php
+
+
+
+Route::get('/ShopPageContent/{meal_type_id}', [MealClassController::class, 'getShopPageContent']);
+
 
 //Dalia routes ends
