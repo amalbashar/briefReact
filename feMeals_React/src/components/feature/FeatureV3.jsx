@@ -65,16 +65,16 @@ export default function FeatureV3() {
                       <Card>
 
                         <CardImage src="https://cdn.pixabay.com/photo/2016/09/15/19/24/salad-1672505_640.jpg" alt="Premium" />
-                        <CardTitle>Premium</CardTitle>
-                        <CardSubtitle>Meals: 15</CardSubtitle>
+                        <CardTitle>Basic</CardTitle>
+                        <CardSubtitle>1 meal in week</CardSubtitle>
                       </Card>
                     </div>
                     <div className="col-md-4">
                       <Card>
 
                         <CardImage src="https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_640.jpg" alt="Basic" />
-                        <CardTitle>Basic</CardTitle>
-                        <CardSubtitle>Meals: 10</CardSubtitle>
+                        <CardTitle>Premium</CardTitle>
+                        <CardSubtitle>2 meal in week</CardSubtitle>
                       </Card>
                     </div>
                     <div className="col-md-4">
@@ -82,7 +82,7 @@ export default function FeatureV3() {
 
                         <CardImage src="https://cdn.pixabay.com/photo/2023/07/23/20/44/pastry-shop-8145805_1280.jpg" alt="VIP" />
                         <CardTitle>VIP</CardTitle>
-                        <CardSubtitle>Meals: 20</CardSubtitle>
+                        <CardSubtitle>4 meal in week</CardSubtitle>
                       </Card>
                     </div>
                   </div>

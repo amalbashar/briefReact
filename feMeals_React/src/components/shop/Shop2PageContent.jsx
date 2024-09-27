@@ -69,7 +69,7 @@ const Dashboard = () => {
     const [activePage, setActivePage] = useState('userDashboard'); // للتحكم في الصفحة النشطة
 
     useEffect(() => {
-        axios.get('http://localhost:8001/api/user')
+        axios.get('http://localhost:8000/api/user')
             .then(response => {
                 console.log(response.data); // طباعة البيانات للتحقق
                 setUserData(response.data); // تعيين البيانات المسترجعة للحالة

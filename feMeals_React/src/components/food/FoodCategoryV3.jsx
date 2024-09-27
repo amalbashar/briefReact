@@ -7,7 +7,7 @@ const FoodCategoryV3 = () => {
     const [selectedCategory, setSelectedCategory] = useState('Keto'); 
 
     useEffect(() => {
-        axios.get(`http://localhost:8001/api/food-menu`, {
+        axios.get(`http://localhost:8000/api/food-menu`, {
             params: {
                 category: selectedCategory 
             }

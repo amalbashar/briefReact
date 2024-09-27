@@ -31,7 +31,7 @@ import BlogStandardPageDark from './pages/blogPages/BlogStandardPageDark';
 import BlogWithSidebarPageDark from './pages/blogPages/BlogWithSidebarPageDark';
 import Blog2ColumnPageDark from './pages/blogPages/Blog2ColumnPageDark';
 import Blog3ColumnPageDark from './pages/blogPages/Blog3ColumnPageDark';
-import BlogSinglePageDark from './pages/blogPages/BlogSinglePageDark';
+// import BlogSinglePageDark from './pages/blogPages/BlogePageDark';
 import BlogSingleWithSidebarPageDark from './pages/blogPages/BlogSingleWithSidebarPageDark';
 import ShopPage from './pages/shopPages/ShopPage';
 import ShopSinglePage from './pages/shopPages/ShopSinglePage';
@@ -84,7 +84,7 @@ const Routers = () => {
                 <Route path='/blog-with-sidebar-dark' element={<BlogWithSidebarPageDark />}></Route>
                 <Route path='/blog-2-column-dark' element={<Blog2ColumnPageDark />}></Route>
                 <Route path='/blog-3-column-dark' element={<Blog3ColumnPageDark />}></Route>
-                <Route path='/blog-single-dark/:id' element={<BlogSinglePageDark />}></Route>
+                {/* <Route path='/blog-single-dark/:id' element={<BlogSinglePageDark />}></Route> */}
                 <Route path='/blog-single-with-sidebar-dark/:id' element={<BlogSingleWithSidebarPageDark />}></Route>
 
                 <Route path='/shop' element={<ShopPage />}></Route>
