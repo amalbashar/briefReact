@@ -19,8 +19,8 @@ const HeaderV1 = () => {
                                 <i className="fa fa-bars"></i>
                             </button>
                             <Link className="navbar-brand" to="/#">
-                                <img src="/assets/img/logo-light.png" className="logo logo-display" alt="Logo" />
-                                <img src="/assets/img/logo.png" className="logo logo-scrolled" alt="Logo" />
+                                <img src="/assets/img/femaelslogo.png" className="logo logo-display" alt="Logo" />
+                                <img src="/assets/img/femaelslogo.png" className="logo logo-scrolled" alt="Logo" />
                             </Link>
                         </div>
 

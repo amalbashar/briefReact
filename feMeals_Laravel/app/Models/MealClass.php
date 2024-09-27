@@ -9,12 +9,12 @@ class MealClass extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'meal_type_id'];
+    protected $fillable = ['name','price', 'meal_num', 'description', 'image', 'meal_type_id'];
 
     // Relationships
     public function mealType()
     {
-        return $this->belongsTo(MealType::class);
+        return $this->belongsTo(MealType::class, 'meal_type_id');
     }
 
     public function subscriptions()
