@@ -5407,7 +5407,7 @@
      position: absolute;
      left: 0;
      bottom: 0;
-     border-left: 1px solid #dddddd;
+     border-left: 1px solid #343333;
      border-top-right-radius: 10px;
      padding: 30px;
      background: var(--white);
@@ -5418,7 +5418,7 @@
  }
 
  .food-menu-style-three .info {
-     border: 1px solid #dddddd;
+     border: 1px solid #484545;
      padding: 30px;
      border-top: none;
      padding-top: 20px;

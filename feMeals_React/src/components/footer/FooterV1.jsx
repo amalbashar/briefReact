@@ -21,7 +21,7 @@ const FooterV1 = () => {
                             <div className="col-lg-6">
                                 <div className="footer-logo">
                                     <Link to="/#">
-                                        <img src="/assets/img/logo-light.png" alt="Logo" />
+                                        <img src="/assets/img/femaelslogo.png" alt="Logo" />
                                     </Link>
                                 </div>
                             </div>

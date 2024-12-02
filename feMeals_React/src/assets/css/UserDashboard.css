@@ -1,0 +1,113 @@
+/* الصفحة بشكل عام */
+.dashboard-container {
+    display: flex;
+    align-items: flex-start; /* جعل المحتوى العلوي في المنتصف */
+    justify-content: center;
+    padding: 40px; /* زيادة الـ padding لإعطاء مساحة حول المحتوى */
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%; /* تكبير عرض الصفحة */
+    margin: 40px auto; /* إضافة مسافة من الأعلى والأسفل */
+    font-family: Arial, sans-serif;
+}
+
+/* الصورة الشخصية */
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 30px; /* إضافة مسافة بين الصورة والمحتوى */
+}
+
+.profile-image {
+    width: 120px; /* تعديل حجم الصورة */
+    height: 120px;
+    border-radius: 50%; /* جعل الصورة دائرية */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* المحتوى */
+.content-section {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.content-section h2, .content-section h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 60px;
+}
+
+.subscription-container h3 {
+    margin-bottom: 20px;
+    color: #000507;
+    font-size: 22px;
+}
+
+.subscription-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* استخدام Grid لترتيب الكاردات */
+    gap: 20px; /* المسافة بين الكاردات */
+}
+
+.subscription-card {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* إضافة ظل أخف */
+    transition: box-shadow 0.3s ease;
+}
+
+.subscription-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* تأثير عند تمرير الماوس */
+}
+
+.subscription-card h4 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+}
+
+.subscription-card p {
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 15px;
+}
+
+/* الأزرار */
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.dashboard-button, .cancel-button {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dashboard-button {
+    background-color: #826A45;
+    color: #fff;
+}
+
+.dashboard-button.active {
+    background-color: #826A45; /* لون مميز للزر الفعّال */
+}
+
+.cancel-button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.dashboard-button:hover, .cancel-button:hover {
+    opacity: 0.8;
+}

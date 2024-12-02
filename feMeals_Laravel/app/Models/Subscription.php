@@ -9,7 +9,7 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'meal_class_id', 'start_date', 'end_date', 'status', 'delivery_info'];
+    protected $fillable = ['user_id', 'meal_class_id', 'start_date', 'end_date', 'status', 'delivery_info', 'approved_by',];
 
     // Relationships
     public function user()

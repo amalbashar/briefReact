@@ -9,7 +9,7 @@ class Meal extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'type', 'meal_type_id', 'meal_class_id'];
+    protected $fillable = ['name', 'meal_time', 'meal_type_id', 'calories','image', 'meal_class_id'];
 
     // Relationships
     public function mealType()

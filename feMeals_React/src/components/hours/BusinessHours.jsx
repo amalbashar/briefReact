@@ -10,7 +10,7 @@ const BusinessHours = () => {
             <div className="opening-hours-area default-padding overflow-hidden">
                 <div className="container">
                     <div className="opening-hour-items">
-                        <h6 className="text-fixed">FE-MEAL</h6>
+                        <h6 className="text-fixed">FEMEALs</h6>
                         <div className="shape">
                             <img src={shape4} alt="Image Not Found" />
                         </div>

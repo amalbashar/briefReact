@@ -1,8 +1,8 @@
 import React from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
+import { Link } from 'react-router-dom'; // Changed from HashLink to standard Link
 
 const SingleFoodCategoryV3 = ({ data }) => {
-    const { thumb, name } = data; 
+    const { thumb, name, meal_type_id } = data;
 
     return (
         <>
@@ -12,9 +12,11 @@ const SingleFoodCategoryV3 = ({ data }) => {
                 </div>
                 <div className="info">
                     <h4><Link to="/shop-single#">{name}</Link></h4>
-                    <Link to="/subscription-details#" className="btn btn-primary mt-3">
-                    Subscribe on This Diet
-                                        </Link>
+                    <Link 
+                        to={`/subscription-details/${meal_type_id}`} 
+                        className="btn btn-primary mt-3">
+                        Subscribe on This Diet
+                    </Link>
                 </div>
             </div>
         </>

@@ -39,5 +39,9 @@ Route::get('/', function () {
 //Dania routes ends
 
 //Dalia routes start
+use App\Http\Controllers\SubscriptionController;
+
+Route::get('/bookings', [SubscriptionController::class, 'index'])->name('bookings.index');
+Route::get('/bookings/book/{id}', [SubscriptionController::class, 'book'])->name('bookings.book');
 
 //Dalia routes ends

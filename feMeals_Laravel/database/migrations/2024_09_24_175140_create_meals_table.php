@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name'); 
             $table->string('meal_time');
-            $table->string('calories'); 
+            $table->string('calories');
+            $table->string('image')->nullable(); 
+
             $table->foreignId('meal_type_id')->constrained('meal_types')->onDelete('cascade');
             $table->foreignId('meal_class_id')->constrained('meal_classes')->onDelete('cascade');
             $table->timestamps();

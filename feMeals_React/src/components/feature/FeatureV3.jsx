@@ -1,8 +1,8 @@
 import React from 'react';
 import BookingTableForm from '../form/BookingTableForm';
-import styled from 'styled-components'; // تأكد من تثبيت المكتبة
+import styled from 'styled-components';
 
-// استخدام styled-components لتصميم الكاردات
+// Using styled-components to style the card and image
 const Card = styled.div`
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
@@ -12,6 +12,7 @@ const Card = styled.div`
     transition: all 0.3s ease-in-out;
     max-width: 300px;
     margin: 0 auto;
+    text-align: center; /* Center content */
 
     &:hover {
         transform: translateY(-10px);
@@ -31,6 +32,14 @@ const CardSubtitle = styled.p`
     margin-top: 10px;
 `;
 
+const CardImage = styled.img`
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+`;
+
 export default function FeatureV3() {
   return (
     <>
@@ -48,26 +57,32 @@ export default function FeatureV3() {
               <div className="relative default-padding-top">
                 <div className="food-cat-items">
                   <h2 className="flex-title mb-35">
-                    Our Subscriptions 
+                    Our Subscriptions
                   </h2>
 
                   <div className="row justify-content-center">
                     <div className="col-md-4">
                       <Card>
-                        <CardTitle>Premium</CardTitle>
-                        <CardSubtitle>Meals: 15</CardSubtitle>
-                      </Card>
-                    </div>
-                    <div className="col-md-4">
-                      <Card>
+
+                        <CardImage src="https://cdn.pixabay.com/photo/2016/09/15/19/24/salad-1672505_640.jpg" alt="Premium" />
                         <CardTitle>Basic</CardTitle>
-                        <CardSubtitle>Meals: 10</CardSubtitle>
+                        <CardSubtitle>1 meal in week</CardSubtitle>
                       </Card>
                     </div>
                     <div className="col-md-4">
                       <Card>
+
+                        <CardImage src="https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_640.jpg" alt="Basic" />
+                        <CardTitle>Premium</CardTitle>
+                        <CardSubtitle>2 meal in week</CardSubtitle>
+                      </Card>
+                    </div>
+                    <div className="col-md-4">
+                      <Card>
+
+                        <CardImage src="https://cdn.pixabay.com/photo/2023/07/23/20/44/pastry-shop-8145805_1280.jpg" alt="VIP" />
                         <CardTitle>VIP</CardTitle>
-                        <CardSubtitle>Meals: 20</CardSubtitle>
+                        <CardSubtitle>4 meal in week</CardSubtitle>
                       </Card>
                     </div>
                   </div>
